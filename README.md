@@ -35,50 +35,45 @@ The configuration details of each machine may be found below.
 
 | Name           | Function                                                                                                      | IP Address                                 | Operating System                    |
 |----------------|---------------------------------------------------------------------------------------------------------------|--------------------------------------------|-------------------------------------|
-| JumpBoxRedTeam | Used to access private network servers <br>Docker<br>Ansible                                                  | Public: 20.25.27.214<br>Private: 10.0.0.5  | Ubuntu                              |
-| Web1           | DVWA App Server<br>Filebeat<br>Metricbeat                                                                     | Public: 20.231.74.173<br>Private: 10.0.0.4 | Ubuntu                              |
-| Web2           | DVWA App Server<br>Filebeat<br>Metricbeat                                                                     | Public: 20.231.74.173<br>Private: 10.0.0.6 | Ubuntu                              |
-| Elk Server     | Kibana Elastic Search                                                                                         | Public: 20.98.226.195<br>Private: 10.2.0.4 | Ubuntu                              |
-| RedTeamLB      | * Load balancer for cloud services <br>  and virtual machines<br>* Secure network traffic behind 1 Public IP  | public: 20.231.74.173                      | Built-in Azure<br>software solution |
+| JumpBoxRedTeam | Gateway  | Public: 20.25.27.214<br>Private: 10.0.0.5  | Ubuntu |
+| Web1           | DVWA App | Public: 20.231.74.173<br>Private: 10.0.0.4 | Ubuntu |
+| Web2           | DVWA App | Public: 20.231.74.173<br>Private: 10.0.0.6 | Ubuntu |
+| Elk Server     | Kibana   | Public: 20.114.203.230<br>Private: 10.2.0.4 | Ubuntu |
+| RedTeamLB | Load Balancing | Public: 20.231.74.173 | Basic Azure Load Balancer<br>Layer four |
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+The servers on the internal network are not exposed to the public Internet. 
 
-Only the load balancer can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
-
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Only the jump box can accept connections from the Internet. Access to this machine is only allowed from the following IP address: 204.210.241.248:22. Servers within the private network can only be accessed by the jump box as well.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 | 204.210.241.248:22   |
+| Web1     | No                  | 10.0.0.0/16          |
+| Web2     | No                  | 10.0.0.0/16          |
+| ElkServer| Yes                 | 204.210.241.248:5601 |
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate the ELK server setup. No configuration was performed manually, which is advantageous because it is simple to set up and use.  It can be used to configure many machines at once, and it can model complex workflows. 
+The main advantage is a fast, secure setup process. 
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Elk server - Installs and configures Docker, Python and Kibana.
+- Web1 & Web2 servers: Installs and configures Docker, Apache, Filebeat, Metricbeat and the DVWA web application.
+- Increases vm.max_map_count on the ELK server to allow Elasticsearch functionality.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![image](https://user-images.githubusercontent.com/47544604/160303171-270d5efb-6801-420c-9633-98a825956c60.png)
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
-
+This ELK server is configured to monitor the web servers, IP's 10.0.0.4 and 10.0.0.6
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- Filebeat
+- Metricbeat
 
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
@@ -87,9 +82,9 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the public ssh key file to the ELK container.
+- Update the hosts file to include a web group (Web1 & Web2) and an ELK group (ELK server)
+- Run the playbook, and navigate to http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
