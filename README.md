@@ -5,7 +5,7 @@ The files in this repository were used to configure the network depicted below.
 ![alt text](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/blob/116668774516c3de41511eeb95400aeedf10885d/diagrams/TracyLangfordWeek12_Homework.drawio.png "Logo Title Text 1")
 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select portions of the Hosts file may be used to install only certain pieces of it, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
 
   - _TODO: Enter the playbook file._
 .
@@ -24,9 +24,9 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the web application is highly available while also restricting access to the private network.
 - Load balancers control network traffic and protect private networks using built-in network address translation (NAT). 
-- The jump box is used by admins to connect to servers within the private network.  This avoids 
+- The jump box is used by admins to connect to servers within the private network, avoiding direct connections to the          application servers.
 
-Integrating an ELK server allows users to easily monitor the vulnerable web servers for changes to the logs and system resources.
+Integrating an ELK server allows users to easily monitor the vulnerable web servers for changes to the logs and system resources. Software agents (beats) are installed on the Web servers to collect data:  
 - The Filebeat agent monitors and harvests specified log events to be aggregated for output.
 - Metricbeat collects statistics from server services and ships the data to a specified output.
 
