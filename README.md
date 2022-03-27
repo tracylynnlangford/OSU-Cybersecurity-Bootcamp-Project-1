@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](diagrams/ElkStackImageDraft.jpg)
+https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/blob/f23462709d443bc574d23f57da0228d357b1f195/diagrams/TracyLangfordWeek12_Homework.jpg
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
 
