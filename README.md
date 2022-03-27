@@ -1,6 +1,3 @@
-# OSU-Cybersecurity-Bootcamp-Project-1
-Azure Setup
-@ -0,0 +1,96 @@
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
