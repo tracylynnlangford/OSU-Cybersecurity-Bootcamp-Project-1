@@ -22,22 +22,24 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application is highly available while also restricting access to the network.
-- Two elements of the CIA triad are represented here. Availability is enforced with the load balancer.  The jump box and load balancer both enforce confidentiality.  
+Load balancing ensures that the web application is highly available while also restricting access to the private network.
+- Load balancers control network traffic and protect private networks using built-in network address translation (NAT). 
+- The jump box is used by admins to connect to servers within the private network.  This avoids 
 
 Integrating an ELK server allows users to easily monitor the vulnerable web servers for changes to the logs and system resources.
-- The Filebeat agent monitors and harvests specified log events to be aggregated for specified output.
+- The Filebeat agent monitors and harvests specified log events to be aggregated for output.
 - Metricbeat collects statistics from server services and ships the data to a specified output.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+
+| Name           | Function                                                                                                      | IP Address                                 | Operating System                    |
+|----------------|---------------------------------------------------------------------------------------------------------------|--------------------------------------------|-------------------------------------|
+| JumpBoxRedTeam | Used to access private network servers <br>Docker<br>Ansible                                                  | Public: 20.25.27.214<br>Private: 10.0.0.5  | Ubuntu                              |
+| Web1           | DVWA App Server<br>Filebeat<br>Metricbeat                                                                     | Public: 20.231.74.173<br>Private: 10.0.0.4 | Ubuntu                              |
+| Web2           | DVWA App Server<br>Filebeat<br>Metricbeat                                                                     | Public: 20.231.74.173<br>Private: 10.0.0.6 | Ubuntu                              |
+| Elk Server     | Kibana Elastic Search                                                                                         | Public: 20.98.226.195<br>Private: 10.2.0.4 | Ubuntu                              |
+| RedTeamLB      | * Load balancer for cloud services <br>  and virtual machines<br>* Secure network traffic behind 1 Public IP  | public: 20.231.74.173                      | Built-in Azure<br>software solution |
 
 ### Access Policies
 
