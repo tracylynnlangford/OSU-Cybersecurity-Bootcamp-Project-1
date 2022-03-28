@@ -85,7 +85,7 @@ In order to use the playbook, you will need to have an Ansible control node (exi
 
 SSH into the Ansible container on the jump server and follow the steps below:
 - Copy the playbook files from the ansible folder on this repository (or create your own) to /etc/ansible.
-- Update the [hosts file](../blob/master/ansible/hosts.txt) to include a web group (Web1 & Web2) and an ELK group (ELK server)
+- Update the [hosts file](../blob/master/ansible/hosts) to include a web group (Web1 & Web2) and an ELK group (ELK server)
 - Run the playbook, and navigate to http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
