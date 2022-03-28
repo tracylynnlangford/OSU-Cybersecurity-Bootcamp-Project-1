@@ -7,10 +7,14 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
 
-  enter playbook here
+- [install-elk.yml](../blob/master/ansible/install-elk.yml)
+- [filebeat-playbook.yml](../blob/master/ansible/filebeat-playbook.yml)
+- [metricbeat-playbook.yml](../blob/master/ansible/metricbeat-playbook.yml)
+- [metricbeat-config.yml](../blob/master/ansible/metricbeat-config.yml)
+- [mfilebeat-config.yml](../blob/master/ansible/filebeat-config.yml)
   
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -62,15 +66,15 @@ Ansible was used to automate the ELK server setup. No configuration was performe
 The main advantage is a fast, secure setup process. 
 
 The playbook implements the following tasks:
-- Elk server - Installs and configures Docker, Python and Kibana.
-- Web1 & Web2 servers: Installs and configures Docker, Apache, Filebeat, Metricbeat and the DVWA web application.
-- Increases vm.max_map_count on the ELK server to allow Elasticsearch functionality.
+- Installs and configures Docker, Python and Kibana onto the ELK server
+- Installs and configures Docker, Apache, Filebeat, Metricbeat on both web servers
+- Installs and configures DVWA web application on both web servers
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 ![image](https://user-images.githubusercontent.com/47544604/160303171-270d5efb-6801-420c-9633-98a825956c60.png)
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the web servers, IP's 10.0.0.4 and 10.0.0.6
+This ELK server is configured to monitor the web servers (10.0.0.4 and 10.0.0.6).
 We have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
