@@ -11,7 +11,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
 - [filebeat-playbook.yml](../blob/master/ansible/filebeat-playbook.yml)
 - [metricbeat-playbook.yml](../blob/master/ansible/metricbeat-playbook.yml)
 - [metricbeat-config.yml](../blob/master/ansible/metricbeat-config.yml)
-- [mfilebeat-config.yml](../blob/master/ansible/filebeat-config.yml)
+- [filebeat-config.yml](../blob/master/ansible/filebeat-config.yml)
   
 This document contains the following details:
 - Description of the Topology
@@ -76,18 +76,16 @@ The following screenshot displays the result of running `docker ps` after succes
 ### Target Machines & Beats
 This ELK server is configured to monitor the web servers (10.0.0.4 and 10.0.0.6).
 We have installed the following Beats on these machines:
-- Filebeat
-- Metricbeat
+- Filebeat - Allows for collection of log events (ie, failed login attempts, messages, warnings, errors) or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing
+- Metricbeat - Collects metrics and statistics from the operating system (such as CPU load, memory data, network flow, etc. and ships them to the output that you specify, such as Elasticsearch or Logstash
 
-These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, you will need to have an Ansible control node (exists on the jump box in our drawing) already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below:
-- Copy the public ssh key file to the ELK container.
-- Update the hosts file to include a web group (Web1 & Web2) and an ELK group (ELK server)
+SSH into the Ansible container on the jump server and follow the steps below:
+- Copy the playbook files from the ansible folder on this repository (or create your own) to /etc/ansible.
+- Update the [hosts file](../blob/master/ansible/hosts.txt) to include a web group (Web1 & Web2) and an ELK group (ELK server)
 - Run the playbook, and navigate to http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
