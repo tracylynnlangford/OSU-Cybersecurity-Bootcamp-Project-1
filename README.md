@@ -93,4 +93,3 @@ SSH into the Ansible container on the jump server and follow the steps below:
 ![image](https://user-images.githubusercontent.com/47544604/160514677-f8dd8897-29b8-49b8-938e-1115ea4f07ef.png)
 
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
