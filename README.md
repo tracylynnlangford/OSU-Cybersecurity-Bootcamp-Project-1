@@ -7,7 +7,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
 
-[Playbook files](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible)
+[__Playbook files__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible)
   
 This document contains the following details:
 - Description of the Topology
@@ -72,8 +72,8 @@ The following screenshot displays the result of running `docker ps` after succes
 ### Target Machines & Beats
 This ELK server is configured to monitor the web servers (10.0.0.4 and 10.0.0.6).
 We have installed the following Beats on these machines:
-- **_Filebeat_** - Allows for collection of log events (ie, failed login attempts, messages, warnings, errors) or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing
--**_Metricbeat_* - Collects metrics and statistics from the operating system (such as CPU load, memory data, network flow, etc. and ships them to the output that you specify, such as Elasticsearch or Logstash
+- **__Filebeat__** - Allows for collection of log events (ie, failed login attempts, messages, warnings, errors) or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing
+- **__Metricbeat__** - Collects metrics and statistics from the operating system (such as CPU load, memory data, network flow, etc. and ships them to the output that you specify, such as Elasticsearch or Logstash
 
 
 ### Using the Playbook
