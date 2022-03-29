@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![alt text](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/blob/116668774516c3de41511eeb95400aeedf10885d/diagrams/TracyLangfordWeek12_Homework.drawio.png "Logo Title Text 1")
+![image](https://user-images.githubusercontent.com/47544604/160516628-4750841f-b563-41d5-9c13-53a425abdd93.png)
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
