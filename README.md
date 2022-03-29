@@ -75,15 +75,22 @@ We have installed the following Beats on these machines:
 - **__Filebeat__** - Allows for collection of log events (ie, failed login attempts, messages, warnings, errors) or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing
 - **__Metricbeat__** - Collects metrics and statistics from the operating system (such as CPU load, memory data, network flow, etc. and ships them to the output that you specify, such as Elasticsearch or Logstash
 
+**__Sample screen shot from Filebeat filtering for 'sample_web_logs'.__**
+![image](https://user-images.githubusercontent.com/47544604/160513469-988af6fd-c01f-42b7-8ba2-98792bf127e2.png)
+
+**__Sample screen shot from Metricbeat displays CPU metrics__**
+![image](https://user-images.githubusercontent.com/47544604/160513960-7591cdd2-474f-48ec-bae3-ca4a061ae5c2.png)
+
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node (exists on the jump box in our drawing) already configured. Assuming you have such a control node provisioned: 
 
 SSH into the Ansible container on the jump server and follow the steps below:
-- Copy the playbook files from the ansible folder on this repository (or create your own) to /etc/ansible.
+- Copy the playbook files from the [__ansible folder__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible) to /etc/ansible.
 - Update the [hosts file](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/blob/main/ansible/hosts.txt) to include a web group (Web1 & Web2) and an ELK group (ELK server)
-- Run the playbook, and navigate to http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected.
+- Run the playbook, and navigate to http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected. Sample screen shot below:
 
+![image](https://user-images.githubusercontent.com/47544604/160514677-f8dd8897-29b8-49b8-938e-1115ea4f07ef.png)
 
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
