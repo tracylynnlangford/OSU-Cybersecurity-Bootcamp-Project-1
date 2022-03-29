@@ -2,12 +2,12 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![image](https://user-images.githubusercontent.com/47544604/160516628-4750841f-b563-41d5-9c13-53a425abdd93.png)
+![image](https://user-images.githubusercontent.com/47544604/160623101-8f70d1e0-373a-4ac7-ba37-523d40025bc1.png)
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
 
-[__Playbook files__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible)
+[__Playbook files (click here)__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible)
   
 This document contains the following details:
 - Description of the Topology
