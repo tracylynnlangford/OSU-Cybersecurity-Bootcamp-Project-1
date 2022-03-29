@@ -1,12 +1,12 @@
 ## Automated ELK Stack Deployment
 
-The files in this repository were used to configure the network depicted below.
+The files in this repository were used to configure the network in the diagram below.
 
 ![image](https://user-images.githubusercontent.com/47544604/160641187-09c57da7-4e52-4614-bc23-84bf56ad2f25.png)
 
 
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment pictured above. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to recreate the entire deployment. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
 
 [__Playbook files (click here)__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible)
   
@@ -15,7 +15,7 @@ This document contains the following details:
 - Access Policies
 - ELK Configuration
   - Beats in Use
-  - Machines Being Monitored
+  - Servers Being Monitored
 - How to Use the Ansible Build
 
 
@@ -31,7 +31,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable web serv
 - The Filebeat agent monitors and harvests specified log events to be aggregated for output.
 - Metricbeat collects statistics from server services and ships the data to a specified output.
 
-The configuration details of each machine may be found below.
+The configuration details of each device are shown below.
 
 
 | Name           | Function                                                                                                      | IP Address                                 | Operating System                    |
@@ -46,34 +46,30 @@ The configuration details of each machine may be found below.
 
 The servers on the internal network are not exposed to the public Internet. 
 
-Only the jump box can accept connections from the Internet. Access to this machine is only allowed from the following IP address: 204.210.241.248:22. Servers within the private network can only be accessed by the jump box as well.
+Only the jump box can accept direct connections from the Internet. Access to this server is only allowed from the following IP address: 204.210.241.248:22. Additionally, servers within the private network can receive direct connections only from the jump server, not from one another.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | Yes                 | 204.210.241.248:22   |
-| Web1     | No                  | 10.0.0.0/16          |
-| Web2     | No                  | 10.0.0.0/16          |
+| Web1     | No                  | 10.0.0.5             |
+| Web2     | No                  | 10.0.0.5             |
 | ElkServer| Yes                 | 204.210.241.248:5601 |
 
 ### Elk Configuration
 
-Ansible was used to automate the ELK server setup. No configuration was performed manually, which is advantageous because it is simple to set up and use.  It can be used to configure many machines at once, and it can model complex workflows. 
-The main advantage is a fast, secure setup process. 
+Ansible was used to automate the ELK server setup. No configuration was performed manually. It is simple to set up and use, it can be used to configure many machines at once, and it can model complex workflows.  The primary advantage is a fast, secure setup process. 
 
 The playbook implements the following tasks:
 - Installs and configures Docker, Python and Kibana onto the ELK server
 - Installs and configures Docker, Apache, Filebeat, Metricbeat on both web servers
 - Installs and configures DVWA web application on both web servers
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-![image](https://user-images.githubusercontent.com/47544604/160303171-270d5efb-6801-420c-9633-98a825956c60.png)
-
 ### Target Machines & Beats
 This ELK server is configured to monitor the web servers (10.0.0.4 and 10.0.0.6).
 We have installed the following Beats on these machines:
-- **__Filebeat__** - Allows for collection of log events (ie, failed login attempts, messages, warnings, errors) or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing
+- **__Filebeat__** - Allows for collection of log events (ie, failed login attempts, messages, warnings, errors) or locations that you specify and forwards them either to Elasticsearch or Logstash for indexing
 - **__Metricbeat__** - Collects metrics and statistics from the operating system (such as CPU load, memory data, network flow, etc. and ships them to the output that you specify, such as Elasticsearch or Logstash
 
 **__Sample screen shot from Filebeat filtering for 'sample_web_logs'.__**
@@ -84,12 +80,26 @@ We have installed the following Beats on these machines:
 
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node (exists on the jump box in our drawing) already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, you will need to have an Ansible control node (exists on the jump box in our drawing) already configured. Assuming you have this provisioned: 
 
 SSH into the Ansible container on the jump server and follow the steps below:
 - Copy the playbook files from the [__ansible folder__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible) to /etc/ansible.
 - Update the [hosts file](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/blob/main/ansible/hosts.txt) to include a web group (Web1 & Web2) and an ELK group (ELK server)
-- Run the playbook, and navigate to http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected. Sample screen shot below:
+- Run the playbook:
+    **Prior to running the playbook be sure to review all config files and the hosts file!  Be sure to replace any sample configs (IP's, usernames, etc.) with YOUR information!**
+    1. install-elk.yml  (Linux command from etc/ansible# **ansible-playbook install-elk.yml**)
+    
+     Output will look similar to the image below. 
+    ![image](https://user-images.githubusercontent.com/47544604/160714877-6614a69e-fd91-400c-b90b-a7f5655f5aae.png)
+    
+    The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.  
+    ![image](https://user-images.githubusercontent.com/47544604/160303171-270d5efb-6801-420c-9633-98a825956c60.png)
+    
+    2. filebeat-playbook.yml (Linux command from etc/ansible# **ansible-playbook filebeat-playbook.yml**)
+    3. metricbeat-playbook.yml (Linux command from ect/ansible# **ansible-playbook metricbeat-playbook.yml**)
+
+
+- From your browser enter http://<external IP of ELK server>:5601/app/kibana to check that the installation worked as expected. Sample screen shot below:
 
 ![image](https://user-images.githubusercontent.com/47544604/160514677-f8dd8897-29b8-49b8-938e-1115ea4f07ef.png)
 
