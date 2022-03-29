@@ -4,11 +4,9 @@ The files in this repository were used to configure the network in the diagram b
 
 ![image](https://user-images.githubusercontent.com/47544604/160641187-09c57da7-4e52-4614-bc23-84bf56ad2f25.png)
 
-These files have been tested and used to generate a live ELK deployment using Ubuntu servers on an Azure virtual network. They can be used to recreate the ELK stack deployment. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
+The playbook has been tested and used to generate a live ELK deployment with Ubuntu servers on an Azure virtual network. It can be used to recreate the ELK stack deployment. Alternatively, select playbooks may be used to install only certain portions, such as Filebeat.
 
-[__Playbook files (click here)__](https://github.com/tracylynnlangford/OSU-Cybersecurity-Bootcamp-Project-1/tree/main/ansible)
-  
-  This document contains the following details:
+This document contains the following details:
 - Description of the Topology
 - Access Policies
 - ELK Configuration
@@ -25,7 +23,7 @@ Load balancing ensures that the web application is highly available while also r
 - Load balancers control network traffic and protect private networks using built-in network address translation (NAT). 
 - The jump box is used by administrators to connect to servers within the private network, avoiding direct connections to the     application servers.
 
-Integrating an ELK server allows users to easily monitor the vulnerable web servers for changes to the logs and system resources. Software agents (beats) are installed on the Web servers to collect data:  
+Integrating an ELK server allows users to easily monitor the vulnerable web servers for changes to the logs and system resources. Software agents (beats) are installed on the web servers to collect data:  
 - The Filebeat agent monitors and harvests specified log events to be aggregated for output.
 - Metricbeat collects statistics from server services and ships the data to a specified output.
 
@@ -42,7 +40,7 @@ Configuration details of each device are shown below:
 
 ### Access Policies
 
-The servers on the internal network are not exposed to the public Internet. Only the jump box can accept direct internet connections. Access to this server is only allowed from the following IP address: 204.210.241.248:22. Additionally, servers within the private network can receive direct connections only from the jump server, not from one another.  The table below provides an overview:
+The servers on the internal network are not exposed to the public internet. Only the jump box can accept direct internet connections. Access to this server is only allowed from the following IP address: 204.210.241.248:22. Additionally, servers within the private network can receive direct internal connections only from the jump server, not from one another.  The table below provides an overview:
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
