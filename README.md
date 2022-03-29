@@ -82,18 +82,17 @@ SSH into the Ansible container on the jump server and follow the steps below:
 
 **Prior to running the playbook be sure to review all config files and the hosts file!  Be sure to replace any sample configs (IP's, usernames, etc.) with YOUR information!**
 
-    - install-elk.yml  (Linux command from etc/ansible# **ansible-playbook install-elk.yml**)
+- install-elk.yml  (Linux command from etc/ansible# **ansible-playbook install-elk.yml**)
+  Output will look similar to the image below: 
+  ![image](https://user-images.githubusercontent.com/47544604/160714877-6614a69e-fd91-400c-b90b-a7f5655f5aae.png)
+   
+   The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance:  
+   ![image](https://user-images.githubusercontent.com/47544604/160303171-270d5efb-6801-420c-9633-98a825956c60.png)
     
-     Output will look similar to the image below: 
-    ![image](https://user-images.githubusercontent.com/47544604/160714877-6614a69e-fd91-400c-b90b-a7f5655f5aae.png)
-    
-    The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance:  
-    ![image](https://user-images.githubusercontent.com/47544604/160303171-270d5efb-6801-420c-9633-98a825956c60.png)
-    
-    - filebeat-playbook.yml (Linux command from etc/ansible# **ansible-playbook filebeat-playbook.yml**)
-    - metricbeat-playbook.yml (Linux command from ect/ansible# **ansible-playbook metricbeat-playbook.yml**)
+- filebeat-playbook.yml (Linux command from etc/ansible# **ansible-playbook filebeat-playbook.yml**)
+- metricbeat-playbook.yml (Linux command from ect/ansible# **ansible-playbook metricbeat-playbook.yml**)
 
-- From your browser enter **http://YourELKserverpublicIP:5601/app/kibana** to check that the installation worked as expected. You should see something similar to the image below:
+- From your browser enter http://YourELKserverpublicIP:5601/app/kibana to check that the installation worked as expected. You should see something similar to the image below:
 
 ![image](https://user-images.githubusercontent.com/47544604/160514677-f8dd8897-29b8-49b8-938e-1115ea4f07ef.png)
 
